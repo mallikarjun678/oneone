@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 4 Responsive Layout Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+
+
+
+
+
+        <div class="row ">
+            <div class="  col-md-9 col-sm-10 mx-auto text-center form p-4">
+                <div class="card-body">
+                    <div class="card">
+
+                        <div class="row ">
+                            <div class="col-md-2  ">
+                            </br>
+                                <a href="#"> Back</a>  
+                            </div>
+                            <div class="col-md-8">
+                                <h3>UPDATE AN EXISTING RAFFLE</h3>
+                                <h5>Smith jhon (PLR098)</h5>
+                            </div>
+
+                            <div class="col-md-2  ">
+                            </br>
+                                Home
+                            </div>
+
+                        </div>
+
+
+
+                        <br />
+
+                        <div class="px-2">
+                            <div class="row">
+                                <div class="col-md-7 col-sm-10 mx-auto text-center form p-4">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Choose a Raffle You Want to Update
+                                            </label>
+                                            <select class="form-control selectpicker" id="exampleFormControlSelect1"
+                                                title="one two">
+                                                <option>http://go/techstrategy</option>
+                                                <option>http://go/techquiz</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-7 col-sm-10 mx-auto text-left  form">
+
+                                    <div class="form-group text-left">
+                                        <label for="chooseAnOption" class="text-primary font-weight-bold">
+                                            Choose an Option: </label>
+                                        <div> <a href="#" data-toggle="modal" data-target="#uploadQuestionsModal"
+                                                class="link-primary">
+                                                Upload questions using Excel spreadsheet</a> </div>
+                                        <div><a href="#" data-toggle="modal" data-target="#updateDateTimeModal"
+                                                class="link-primary"> Update the Date and Time </a></div>
+                                        <div><a href="#" data-toggle="modal" data-target="#clearRaffleModal"
+                                                class="link-primary"> Clear a raffle and remove all raffle
+                                                entries </a></div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!--  Start Modal Upload questions using Excel  spreadsheet -->
+    <div class="modal fade" id="uploadQuestionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Upload questions using
+                        Excel spreadsheet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>Instructions</label>
+                    <div>1. Follow the directions in this pdf to create your raffle question.</div>
+                    <div>2. Click here to download Raffle Question and Answer spreadsheet template</div>
+                    <div>3. Done saving your Raffle Question and Answer template? Import and upload your Excel file
+                        below.
+                    </div>
+                    <p>4. <span class="text-danger font-weight-bold"> NOTE:</span> Once you click upload any previous
+                        raffle question will be deleted.</p>
+                    <span>
+                        Import excel file
+                    </span> <input type="file" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Modal Upload questions using Excel  spreadsheet  -->
+
+
+
+
+
+    <!--  Start Modal  Update the Date and Time -->
+    <div class="modal fade" id="updateDateTimeModal" tabindex="-1" role="dialog"
+        aria-labelledby="updateDateTimeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateDateTimeModalLabel"> Open or Close a Raffle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="openTime">Open Time</label>
+                                <input type="date" class="form-control" id="openTime" name="openTime">
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="closeTime">Close Time</label>
+                                <input type="date" class="form-control" id="closeTime" name="closeTime">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Modal  Update the Date and Time   -->
+
+
+
+
+
+
+    <!--  Start Modal  Clear a raffle and remove all raffle entries-->
+    <div class="modal fade" id="clearRaffleModal" tabindex="-1" role="dialog" aria-labelledby="clearRaffleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="clearRaffleModalLabel"> Clear Raffle Entries</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> <span class="text-danger font-weight-bold">WARNING: </span>Export your data before clearing the
+                        raffle All data will be lost once the raffle has
+                        been cleared</p>
+                    <div class="row">
+                        <div class="col-md-4">&nbsp;</div>
+                        <div class=" col-md-4 text-center">
+                            <button type="button" class="btn btn-block btn-primary">Clear</button>
+                        </div>
+                        <div class="col-md-4">&nbsp;</div>
+
+                    </div>
+
+
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Clear</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- End Modal  Clear a raffle and remove all raffle entries  -->
+
+
+
+
+
+
+</body>
+
+</html>
