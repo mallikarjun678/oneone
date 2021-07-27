@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Raffle | Export</title>
+    <link rel="icon" href="/sites/always/website/alwayson/images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css"
+        rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+    <style>
+        .container {
+            box-shadow: 0 0 100px -15px #d8d8d8;
+            border-radius: 5px;
+        }
+    </style>
+
+    <style>
+        .container {
+            box-shadow: 0 0 100px -15px #d8d8d8;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div id="navigationMenus" style="position: relative;"></div>
+    <div id="sidenavmenu"></div>
+    <div class="container techMainContainer">
+        <div id="homePage" class="row text-center ">
+          
+            <div class="col-md-4 col-md-offset-4">
+                <h3>RAFFLE MANAGER</h3>
+                <h5 id="raffle-label"></h5>
+                <br />
+                <button type="button" id="openNewRaffleMainPage" class="btn btn-primary btn-lg btn-block"> Request a New
+                    Raffle
+                </button>
+                <button type="button" id="openUpdateRaffle" class="btn btn-outline-primary btn-lg btn-block">
+                    Update or Clear an Existing Raffle</button>
+                <button type="button" class="btn btn-outline-primary btn-lg btn-block">Export Raffle and Draw
+                    Winners</button>
+                <button type="button" id="superAdminMode" class="btn btn-outline-primary btn-lg btn-block"> Super Admin
+                    Mode </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Start  Enter Eagle ID of Raffle Owner -->
+
+        <div class="row text-center" id="enterEagleId">
+           
+            <div class="row text-center">
+
+                <h3>SUPER ADMIN MODE</h3>
+                <!-- <h5>Smith jhon (PRL098)</h5> -->
+                <br />
+                <div class="px-2">
+                    <div class="row text-center">
+                        <div class="col-md-4 col-md-offset-4">
+                            <form>
+                                <div class="form-group">
+                                    <label for="eagleID">Enter Eagle ID of Raffle Owner</label>
+                                    <input type="text" id="eagleID" class="form-control">
+                                </div>
+                                <button type="button" id="enterEagleIdSubmit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End  Enter Eagle ID of Raffle Owner -->
+
+
+
+        <!-- Start Delete Raffle Page -->
+
+
+        <div class="row text-center" id="deleteRafflePage">
+            <div >
+
+                <h3>SUPER ADMIN MODE</h3>
+                <h5>Smith jhon (PLR098)</h5>
+
+                <br />
+
+                <div class="px-2">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Select a Raffle to Delete </label>
+                                    <select class="form-control selectpicker" id="exampleFormControlSelect1"
+                                        title="one two">
+                                        <option>http://go/techstrategy</option>
+                                        <option>http://go/techquiz</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- End Delete Raffle Page -->
+
+
+
+
+        <!-- Create a New Raffle Main Page -->
+
+
+
+
+        <div class="row text-center" id="newRaffleMainPage">
+            <div >
+                <h3>REQUEST A NEW RAFFLE</h3>
+                <br/>  
+                <div class="px-2">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <form>
+                                <div class="form-group">
+                                    <label for="rafReqSel">Request a New Raffle</label>
+                                    <select class="form-control selectpicker" id="rafReqSel">
+                                        <option>Raffle with Questions</option>
+                                        <option>Raffle without Questions</option>
+                                    </select>
+                                </div>
+
+                                <button type="button" id="newRaffleMainPageSubmitButton" class="btn btn-primary"
+                                    onclick="requestRafSubmit();">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- START  RAFFLE WITH QUESTIONS -->
+
+                <!-- <div class="row" id="raffleWithQuestions">
+
+                    <div class="col-md-12 mx-auto   form p-4">
+
+                        <form>
+                            <div class="form-group">
+                                <label for="question1">How many questions would you like to include in your raffle?
+                                </label>
+                                <textarea class="form-control" id="question1" rows="1"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="question2">How many points would you like to award for a correct answer to a
+                                    multiple choice question?</label>
+                                <textarea class="form-control" id="question2" rows="1"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="question3">How many points would you like to award for a correct answer to
+                                    an open-ended question?</label>
+                                <textarea class="form-control" id="question2" rows="1"></textarea>
+                            </div>
+
+                            <button type="button" class="btn btn-primary">Submit Request</button>
+                        </form>
+                    </div>
+                </div> -->
+
+                <!-- END  RAFFLE WITH QUESTIONS -->
+
+                <!-- START  RAFFLE WITHOUT QUESTIONS -->
+
+                <!-- <div class="row" id="raffleWith-out-questions">
+
+                    <div class="col-md-12 mx-auto   form p-4">
+
+                        <form>
+                            <div class="form-group">
+                                <label for="question1">How many questions would you like to include in your raffle?
+                                </label>
+                                <textarea class="form-control" id="question1" rows="1"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="question2">How many points would you like to award for a correct answer to a
+                                    multiple choice question?</label>
+                                <textarea class="form-control" id="question2" rows="1"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="question3">How many points would you like to award for a correct answer to
+                                    an open-ended question?</label>
+                                <textarea class="form-control" id="question2" rows="1"></textarea>
+                            </div>
+
+                            <button type="button" class="btn btn-primary">Submit Request</button>
+                        </form>
+                    </div>
+                </div> -->
+
+
+                <!-- END  RAFFLE WITHOUT QUESTIONS -->
+
+            </div>
+        </div>
+
+
+
+        <!-- End a New Raffle Main Page -->
+
+
+        <!-- START UPDATE AN EXISTING RAFFLE -->
+
+        <div class="row text-center" id="updateRaffleMainPage">
+            
+            <div >
+
+
+                <div class="row ">
+                    <div class="col-md-2  ">
+                        </br>&nbsp;
+                        <!-- <a href="#"> Back</a> -->
+                    </div>
+                    <div class="col-md-8">
+                        <h3>UPDATE AN EXISTING RAFFLE</h3>
+                        <h5>Smith jhon (PLR098)</h5>
+                    </div>
+
+                    <div class="col-md-2  ">
+                        </br>&nbsp;
+                        <!-- Home  -->
+                    </div>
+
+                </div>
+
+
+
+                <br />
+
+                <div class="px-2">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Choose a Raffle You Want to Update
+                                    </label>
+                                    <select class="form-control selectpicker" id="myrafflesData" title="one two">
+
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+
+                            <div class="form-group text-left">
+                                <label for="chooseAnOption" class="text-primary font-weight-bold">
+                                    Choose an Option: </label>
+                                <div> <a href="#" data-toggle="modal" data-target="#uploadQuestionsModal"
+                                        class="link-primary" onclick="editRaffle('');">
+                                        Upload questions using Excel spreadsheet</a> </div>
+                                <div><a href="#" data-toggle="modal" data-target="#updateDateTimeModal"
+                                        class="link-primary"> Update the Date and Time </a></div>
+                                <div><a href="#" data-toggle="modal" data-target="#clearRaffleModal"
+                                        class="link-primary"> Clear a raffle and remove all raffle
+                                        entries </a></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <!-- END UPDATE AN EXISTING RAFFLE -->
+
+
+    </div>
+
+
+
+    <!--  Start Modal Upload questions using Excel  spreadsheet -->
+    <div class="modal fade" id="uploadQuestionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Upload questions using
+                        Excel spreadsheet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>Instructions</label>
+                    <div>1. Follow the directions in this pdf to create your raffle question.</div>
+                    <div>2. Click here to download Raffle Question and Answer spreadsheet template</div>
+                    <div>3. Done saving your Raffle Question and Answer template? Import and upload your Excel file
+                        below.
+                    </div>
+                    <p>4. <span class="text-danger font-weight-bold"> NOTE:</span> Once you click upload any previous
+                        raffle question will be deleted.</p>
+                    <span>
+                        Import excel file
+                    </span> <input type="file" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="upload-questions-excel" class="btn btn-primary">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Modal Upload questions using Excel  spreadsheet  -->
+
+    <!--  Start Modal  Update the Date and Time -->
+    <div class="modal fade" id="updateDateTimeModal" tabindex="-1" role="dialog"
+        aria-labelledby="updateDateTimeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateDateTimeModalLabel"> Open or Close a Raffle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="openTime">Open Time</label>
+                                <div class="col-lg-10 col-md-6 col-sm-6 col-xs-12">
+                                    <div class='input-group date' id='datetimepicker2'>
+                                        <input id="openTime" name="date1" type='text' placeholder="Pick a date and time"
+                                            class="form-control" required />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- <input type="date" class="form-control" id="openTime" name="openTime"> -->
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="openTime">Open Time</label>
+                                <div class="col-lg-10 col-md-6 col-sm-6 col-xs-12">
+
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        <input id="closeTime" name="date1" type='text'
+                                            placeholder="Pick a date and time" class="form-control" required />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="opencloseRaf">Submit</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- End Modal  Update the Date and Time   -->
+
+    <!--  Start Modal  Clear a raffle and remove all raffle entries-->
+    <div class="modal fade" id="clearRaffleModal" tabindex="-1" role="dialog" aria-labelledby="clearRaffleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="clearRaffleModalLabel"> Clear Raffle Entries</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> <span class="text-danger font-weight-bold">WARNING: </span>Export your data before clearing the
+                        raffle All data will be lost once the raffle has
+                        been cleared</p>
+                    <div class="row">
+                        <div class="col-md-4">&nbsp;</div>
+                        <div class=" col-md-4 text-center">
+                            <button type="button" onclick="deleteListItems('');"
+                                class="btn btn-block btn-primary">Clear</button>
+                        </div>
+                        <div class="col-md-4">&nbsp;</div>
+
+                    </div>
+
+
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Clear</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- End Modal  Clear a raffle and remove all raffle entries  -->
+
+
+    <!-- scripts go here -->
+    <script src="/sites/always/website/alwayson/common/js/jszip.js"></script>
+    <script src="https://cdn.rawgit.com/SheetJS/js-xlsx/master/dist/xlsx.full.min.js"></script>
+
+    <script src="../common/js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="../common/js/bootstrap-datetimepicker.js"></script>
+    <script src="/sites/always/website/alwayson/common/js/jquery.SPServices-0.7.2.min.js"></script>
+
+    <!-- Nav -->
+    <script>
+        $(function () {
+            // technology stip
+            $('#navigationMenu').load('/sites/always/website/tecknowlogy/common/nav-menu/technology-bar-menu.aspx');
+            // <!-- side nav menu -->
+            $('#sidenavmenu').load('/sites/always/website/tecknowlogy/common/nav-menu/side-nav-menu.aspx');
+
+            // $('#navigationMenu').load('/sites/always/website/tecknowlogy/common/nav-menu/tech-nav-menu.aspx');
+        });
+    </script>
+    <!-- Main -->
+    <script>
+        $(document).ready(function () {
+
+            hideAllpages();
+            $("#homePage").show();
+
+
+            $("#openNewRaffle").click(function () {
+                hideAllpages();
+                $("#createNewRafflePage").show();
+            });
+
+            $("#openUpdateRaffle").click(function () {
+                hideAllpages();
+                $("#updateRafflePage").show();
+            });
+
+            $("#superAdminMode").click(function () {
+                hideAllpages();
+                $("#enterEagleId").show();
+            });
+
+            $("#enterEagleIdSubmit").click(function () {
+                hideAllpages();
+                $("#deleteRafflePage").show();
+
+
+            });
+
+            $("#openNewRaffleMainPage").click(function () {
+                hideAllpages();
+                $("#newRaffleMainPage").show();
+
+            });
+
+            $("#newRaffleMainPageSubmitButton").click(function () {
+                hideAllpages();
+                $("#newRaffleMainPage").show();
+            });
+            $("#openUpdateRaffle").click(function () {
+                hideAllpages();
+                $("#updateRaffleMainPage").show();
+            });
+        });
+
+
+        function hideAllpages() {
+            $("#homePage").hide();
+            $("#createNewRafflePage").hide();
+            $("#updateRafflePage").hide();
+            $("#enterEagleId").hide();
+            $("#deleteRafflePage").hide();
+            $("#newRaffleMainPage").hide();
+            $("#raffleWithQuestions").hide();
+            $("#raffleWith-out-questions").hide();
+            $("#updateRaffleMainPage").hide();
+        }
+
+
+
+
+        var webConfig = {
+            listName: 'AOAS-Raffle-Points',
+            baseUrl: "/sites/always",
+            lookupListName: 'AOAS-Lookup-List'
+        };
+
+        var _RafResp = [];
+        var Raffles = "";
+        var DataList = [];
+        var adminMails = '';
+
+        // get user Details
+        $.ajax({
+            url: webConfig.baseUrl + "/_api/web/currentuser",
+            method: 'GET',
+            headers: {
+                "accept": "application/json;odata=verbose",
+            },
+            datatype: 'json'
+        }).done(function (data) {
+            console.log("data USERRR", data)
+            myEagleId = data.d.LoginName.split(/\\/)[1];
+            console.log("eagle", myEagleId);
+            getRaffles(myEagleId);
+
+            var isAdmin = false;
+            $('#mine').hide();
+            $('#your').hide();
+
+        })
+
+        var userDetails = '';
+        $.ajax({
+            url: webConfig.baseUrl + "/_api/web/currentuser",
+            method: 'GET',
+            headers: {
+                "accept": "application/json;odata=verbose",
+            },
+            datatype: 'json'
+        }).done(function (data) {
+            data = data.d;
+            console.log("data USERRR", data);
+            userDetails = {
+                email: data.Email,
+                name: data.Title,
+                eagleId: data.LoginName.split(/\\/)[1]
+            }
+            console.log("data userDetails", userDetails);
+
+        })
+
+        function getRaffles(myEagID) {
+            var url = "/sites/always/_api/Web/Lists/GetByTitle('Raffle-Manager-Admin')/Items";
+            $.ajax({
+                url: url,
+                method: 'GET',
+                headers: {
+                    "accept": "application/json;odata=verbose",
+                },
+                datatype: 'json'
+            }).
+                done(function (data) {
+                    console.log("data here", data.d.results);
+                    var isAdmin = false;
+                    var res = data.d.results;
+                    var links = [];
+                    if (res) {
+                        for (var i = 0; i < res.length; i++) {
+                            console.log("gamma", i)
+                            console.log("myEagID", myEagID, "====", res[i].EagleID, res[i].ID);
+                            DataList.push({ recId: res[i].ID, links: res[i].RaffleGoLinks, email: res[i].Email });
+                            if (res[i].z1di == "Yes") {
+                                adminMails = adminMails + res[i].Email + ",";
+                            }
+                            if (res[i].EagleID.toLowerCase() == myEagID) {
+                                Raffles = res[i].RaffleGoLinks;
+                                isAdmin = res[i].z1di == "Yes" ? true : false;
+                                // if (!isAdmin) {
+                                //     $('#deleteRaffleHead').hide();
+                                //     $('#deleteRaffle').hide();
+                                //     $('#deleteRaffle1').hide();
+                                //     $('#deleteRaffle2').hide();
+                                //     $('#deleteRaffle3').hide();
+                                //     $('#deleteRaffle4').hide();
+                                //     $('#deleteRaffle5').hide();
+                                //     $('#deleteRaffle6').hide();
+                                //     $('#deleteRaffle7').hide();
+                                //     $('#deleteRaffle8').hide();
+                                //     $('#deleteRaffle9').hide();
+                                //     $('#deleteRaffle10').hide();
+                                // }
+                                $('#raffle-label').html(res[i].Title + " ( " + res[i].EagleID + " )");
+                                $('#superAdminMode').hide();
+                                if (isAdmin) {
+                                    $('#superAdminMode').show();
+                                } else {
+                                    $('#superAdminMode').hide();
+
+                                    // $('#eagleID').hide();
+
+                                    // $('#mine').show();
+
+                                }
+                                console.log("LOOP", res[i].RaffleGoLinks);
+                                links = res[i].RaffleGoLinks.split(',');
+                                console.log("LINKS", links);
+                                for (i = 0; i < links.length; i++) {
+                                    links[i] = links[i].trim();
+                                }
+                            }
+                        }
+                        console.log("DataList", DataList)
+                        console.log("entry-text", $('#' + "entry-text").val());
+                        // $('#' + "entry-tsadfext").val("asdf");
+                        _RafResp = links;
+                        console.log("links", links)
+                        setRaffles(links, isAdmin);
+                    }
+
+                    // updateOpenTime(lookupId);
+                });
+        }
+        function setRaffles(rafArr) {
+
+            var myOptions = {
+                val1: 'Blue',
+                val2: 'Orange'
+            };
+            var mySelect = $('#myrafflesData');
+
+
+            console.log("hee", rafArr)
+            var http = "http://";
+            if (rafArr.length > 0) {
+                // reset();
+
+                $.each(rafArr, function (val, text) {
+                    console.log("asd", text)
+                    mySelect.append(
+                        $('<option></option>').val(http + text).html(http + text)
+                    );
+                });
+
+
+                // for (i = 0; i < rafArr.length; i++) {
+
+                //     for (j = 0; j < raffles.length; j++) {
+
+
+                //         if (rafArr[i] == raffles[j]) {
+
+                //             mySelect.append(
+                //                 $('<option></option>').val(rafArr[i]).html(text)
+                //             );
+                //         }
+
+                //     }
+
+                // }
+
+
+                // alert("Raffles fetched sucsessfully.go to your Raffles").
+                // jQuery(function () {
+                //     // jQuery('.targetDiv').hide();
+                //     // jQuery('#div1').show();
+                //     // jQuery('.showSingle').click(function () {
+                //     jQuery('.targetDiv').hide();
+                //     jQuery('#div' + '3').show();
+                //     // });
+                // });
+            } else {
+                // alert("No Raffles Found.");
+                swal("", "No Raffles Found.", "error");
+
+            }
+        }
+
+        // Request Raffle
+        function requestRafSubmit() {
+            $().SPServices({
+                webURL: webConfig.baseUrl,
+                operation: "UpdateListItems",
+                async: false,
+                batchCmd: "New",
+                listName: 'Request-New-Raffle',
+                valuepairs: [
+                    ['Title', userDetails.name],
+                    ['RequestedRaffle', $('#rafReqSel').val()],
+                    ['EagleId', userDetails.eagleId],
+                    ['Email', userDetails.email],
+                    // ['Description', $('#requestRafDesc').val()]
+                ],
+                completefunc: function (xData,
+                    Status) {
+                    swal("Success!", " Requested sucsessfully", "success");
+                    // window.location.href = "mailto:WEBSITEFEEDBACK@usaa.com";
+                }
+            });
+        }
+
+        // open raffle fun
+
+
+        $('#opencloseRaf').click(function () {
+            // open raf
+            openInit();
+            // end open raf
+
+            // Close Raf
+            closeInit();
+            // End close Raf
+
+        });
+        function openInit() {
+            // $('#open-submit').click(function () {
+            var golink = $('#myrafflesData').val().toLowerCase();
+            webConfig.lookupListName = 'AOAS-Lookup-List';
+            console.log("webConfig", webConfig)
+            console.log(" open date submitted");
+            if (golink) {
+                if (golink.indexOf('labs') > 0) {
+                    webConfig.listName = "AOAS-Raffle-Entries";
+                    lookupTitle = 'Entry Raffle';
+                    console.log("you are in LABS");
+                }
+                else if (golink.indexOf('techspotsur') > 0) {
+                    webConfig.listName = "Techspot-Survey";
+                    lookupTitle = 'TechspotSurvey';
+                }
+                else if (golink.indexOf('technologysur') > 0) {
+                    webConfig.listName = "Technology-Survey";
+                    lookupTitle = 'TechnologySurvey';
+                }
+                else if (golink.indexOf('tsurvey') > 0) {
+                    webConfig.listName = "AOAS-Raffle";
+                    lookupTitle = 'Survey Raffle';
+                }
+                else if (golink.indexOf('techspot') > 0) {
+                    webConfig.listName = "TECHSPOT-RAFFLE";
+                    lookupTitle = 'Techspot Raffle'; 1
+                }
+                else if (golink.indexOf('aoas2020workathome') > 0) {
+                    webConfig.listName = "TECKNOWLOGY-RAFFLE";
+                    lookupTitle = 'Tecknowlogy Raffle';
+                }
+                else if (golink.indexOf('hchallenge') > 0) {
+                    webConfig.listName = "AOAS-Raffle-Eventsurvey";
+                    lookupTitle = 'TechChallenge';
+                }
+
+                else if (golink.indexOf('desktopsur') > 0) {
+                    webConfig.listName = "AOAS-DPS";
+                    lookupTitle = 'DesktopSurvey';
+                } else if (golink.indexOf('ncsamchallenge') > 0) {
+                    webConfig.listName = "NCSAM-Raffle-Entries";
+                    lookupTitle = 'NCSAMchallenge';
+                }
+                else if (golink.indexOf('saquestions') > 0) {
+                    webConfig.listName = "SAQuestions-Raffle-Entries";
+                    lookupTitle = 'SAQuestionsRaffle';
+                }
+                else {
+                    webConfig.listName = "AOAS-Raffle-Points";
+                    lookupTitle = 'Raffle';
+                }
+            }
+            getIdByTitleOpen();
+            // });
+
+        }
+        function closeInit() {
+            // $('#close-submit').click(function () {
+            console.log("webConfigss", webConfig)
+            var golink = $('#myrafflesData').val().toLowerCase();
+            if (golink) {
+                if (golink.indexOf('labs') > 0) {
+                    webConfig.listName = "AOAS-Raffle-Entries";
+                    lookupTitle = 'Entry Raffle';
+
+                } else if (golink.indexOf('techspotsur') > 0) {
+                    webConfig.listName = "Techspot-Survey";
+                    lookupTitle = 'TechspotSurvey';
+                }
+                else if (golink.indexOf('technologysur') > 0) {
+                    webConfig.listName = "Technology-Survey";
+                    lookupTitle = 'TechnologySurvey';
+                }
+                else if (golink.indexOf('tsurvey') > 0) {
+                    webConfig.listName = "AOAS-Raffle";
+                    lookupTitle = 'Survey Raffle';
+
+                } else if (golink.indexOf('techspot') > 0) {
+                    webConfig.listName = "TECHSPOT-RAFFLE";
+                    lookupTitle = 'Techspot Raffle';
+                }
+                else if (golink.indexOf('aoas2020workathome') > 0) {
+                    webConfig.listName = "TECKNOWLOGY-RAFFLE";
+                    lookupTitle = 'Tecknowlogy Raffle';
+                } else if (golink.indexOf('hchallenge') > 0) {
+                    console.log("Challenge is")
+                    webConfig.listName = "AOAS-Raffle-Eventsurvey";
+                    lookupTitle = 'TechChallenge';
+                    console.log("list is" + webConfig.listName);
+                    console.log("lookupTitle" + lookupTitle);
+                } else if (golink.indexOf('desktopsur') > 0) {
+                    webConfig.listName = "AOAS-DPS";
+                    lookupTitle = 'DesktopSurvey';
+                } else if (golink.indexOf('ncsamchallenge') > 0) {
+                    webConfig.listName = "NCSAM-Raffle-Entries";
+                    lookupTitle = 'NCSAMchallenge';
+                }
+                else if (golink.indexOf('saquestions') > 0) {
+                    webConfig.listName = "SAQuestions-Raffle-Entries";
+                    lookupTitle = 'SAQuestionsRaffle';
+                }
+                else {
+                    webConfig.listName = "AOAS-Raffle-Points";
+                    lookupTitle = 'Raffle';
+                }
+            }
+            setTimeout(function () {
+                getIdByTitleClosed(webConfig.listName, lookupTitle);
+            }, 1500);
+            // });
+
+        }
+
+        // open Raf
+        function getIdByTitleOpen() {
+            console.log("webConfig lookupTitle", webConfig, lookupTitle)
+            var url = "/sites/always/_api/Web/Lists/GetByTitle('" + 'AOAS-Lookup-List' + "')/Items?$filter= Title eq '" + lookupTitle + "'";
+            $.ajax({
+                url: url,
+                method: 'GET',
+                headers: {
+                    "accept": "application/json;odata=verbose",
+                },
+                datatype: 'json'
+            }).
+                done(function (data) {
+                    lookupId = data.d.results[0].ID;
+                    updateOpenTime(lookupId, data.d.results[0].openLookupValue ? data.d.results[0].openLookupValue : null);
+                });
+        }
+
+        function openRaf() {
+            console.log("webConfig", webConfig)
+            var openTime = $('#openTime').val();
+            var errors = 0;
+            try {
+                $().SPServices({
+                    webURL: webConfig.baseUrl,
+                    operation: "UpdateListItems",
+                    async: false,
+                    batchCmd: "Update",
+                    valuepairs: [["Title", lookupTitle], ["openLookupValue", openTime]],
+                    ID: lookupId,
+                    listName: webConfig.lookupListName,
+                    completefunc: function (xData, Status) { }
+                });
+            }
+            catch (e) {
+                console.error(e);
+                errors++;
+            }
+        }
+
+        function updateOpenTime(lookupId, status) {
+
+            // if (errors <= 0) {
+            //     $('#successAlertOpen').modal('show');
+            if (status) {
+                swal({
+                    title: "Are you sure?",
+                    text: "If you select yes, your raffle will open at : " + $('#openTime').val(),
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: "Cancel",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            openRaf();
+                            swal("Updated!", "Your raffle is updated!", "success");
+                        } else {
+                            swal("Cancelled", "Your raffle is open | " + status, "error");
+                        }
+                    });
+            } else {
+                openRaf();
+                var openT = $('#openTime').val() ? $('#openTime').val() : "";
+                swal("Sucsessfully opened.", "Open time :" + openT, "success");
+
+            }
+            // }
+
+        }
+
+        // close Raf
+        function getIdByTitleClosed() {
+            console.log("lookup value" + lookupTitle);
+            webConfig.lookupListName = 'AOAS-Lookup-List';
+            var url = "/sites/always/_api/Web/Lists/GetByTitle('" + webConfig.lookupListName + "')/Items?$filter= Title eq '" + lookupTitle + "'";
+            $.ajax({
+                url: url,
+                method: 'GET',
+                headers: {
+                    "accept": "application/json;odata=verbose",
+                },
+                datatype: 'json'
+            }).
+                done(function (data) {
+                    console.log("data", data)
+                    lookupId = data.d.results[0].ID;
+                    updateCloseTime(lookupId, data.d.results[0].lookupValue ? data.d.results[0].lookupValue : null);
+                });
+        }
+        function closeRaf() {
+            var closeTime = $('#closeTime').val();
+            console.log("closetime is" + closeTime);
+            var errors = 0;
+            try {
+                $().SPServices({
+                    webURL: webConfig.baseUrl,
+                    operation: "UpdateListItems",
+                    async: false,
+                    batchCmd: "Update",
+                    valuepairs: [["Title", lookupTitle], ["lookupValue", closeTime]],
+                    ID: lookupId,
+                    listName: webConfig.lookupListName,
+                    completefunc: function (xData, Status) { }
+                });
+            }
+            catch (e) {
+                console.error(e);
+                errors++;
+            }
+        }
+        function updateCloseTime(lookupId, status) {
+
+            // if (errors <= 0) {
+            if (status) {
+                swal({
+                    title: "Are you sure?",
+                    text: "If you select yes, your raffle will close at:" + $('#closeTime').val(),
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: "Cancel",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            closeRaf();
+                            swal("Updated!", "Your raffle is updated!", "success");
+                        } else {
+                            swal("Cancelled", "Your raffle is closed | " + status, "error");
+                        }
+                    });
+            } else {
+                closeRaf();
+                var closeT = $('#closeTime').val() ? $('#closeTime').val() : "";
+                swal("Sucsessfully closed.", "Close time :" + closeT, "success");
+
+            }
+
+            // }
+        }
+
+
+        function deleteListItems(url) {
+
+            $("#clearRaffleModal").modal('hide');
+
+            swal({
+                title: "Are you sure?",
+                text: "Do you want to clear raffle entries? \n WARNING: Export your data before clearing the Raffle.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Yes',
+                cancelButtonText: "Cancel",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        getDeleteListItems(url);
+                        swal("Cleared sucsessfully!", "Your raffle is cleared!", "success");
+
+                    } else {
+                        swal("Cancelled", "Cancelled  ", "success");
+                    }
+                });
+        }
+
+
+        var chkLink = '';
+        var listName = '';
+        function editRaffle() {
+            chkLink = $('#myrafflesData').val().toLowerCase();
+            console.log("editRaffleURL chkLink", chkLink);
+            // http://go/TechChallenge
+            var titleChk = chkLink.split("go/")[1];
+            console.log("titleChk", titleChk);
+            if (titleChk == "saquestions") {
+                titleChk = "saquestionsraffle";
+                // titleChk = "SAQuestionsRaffle";
+            }
+            var url = "/sites/always/_api/Web/Lists/GetByTitle('" + 'AOAS-Lookup-List' + "')/Items?$filter= Title eq '" + titleChk + "'";
+            $.ajax({
+                url: url,
+                method: 'GET',
+                headers: {
+                    "accept": "application/json;odata=verbose",
+                },
+                datatype: 'json'
+            }).
+                done(function (data) {
+                    console.log("DATA XXX", data);
+                    if (data.d.results[0]) {
+                        console.log("REDIRECT TO", data.d.results[0].Raffle_x002d_QAList_x002d_Url.Url);
+                        if (data.d.results[0].Raffle_x002d_QAList_x002d_Url.Url) {
+                            // window.open(data.d.results[0].Raffle_x002d_QAList_x002d_Url.Url, '_blank')
+                            listName = data.d.results[0].Raffle_x002d_QAList_x002d_Url.Description;
+                            // $('#chkLink-section').hide();
+                            // $('#chkLinkVal').html(chkLink);
+                            // $('#upload-excel-section').show();
+                        } else {
+                            alert("No records Found.")
+                        }
+
+                    } else {
+                        alert("No records Found.")
+                    }
+                })
+        }
+
+
+        function getDeleteListItems(url) {
+            console.log("URL", url)
+            var golink = $('#myrafflesData').val().toLowerCase();
+            console.log("golinkgolink", golink)
+            if (golink) {
+                if (golink.indexOf('labs') > 0) {
+                    webConfig.listName = "AOAS-Raffle-Entries";
+                    lookupTitle = 'Entry Raffle';
+                } else if (golink.indexOf('technologysur') > 0) {
+                    webConfig.listName = "Technology-Survey";
+                    lookupTitle = 'TechnologySurvey';
+                }
+                else if (golink.indexOf('techspotsur') > 0) {
+                    webConfig.listName = "Techspot-Survey";
+                    lookupTitle = 'TechspotSurvey';
+                }
+                else if (golink.indexOf('tsurvey') > 0) {
+                    webConfig.listName = "AOAS-Raffle";
+                    lookupTitle = 'Survey Raffle';
+                } else if (golink.indexOf('techspot') > 0) {
+                    webConfig.listName = "TECHSPOT-RAFFLE";
+                    lookupTitle = 'Techspot Raffle';
+                }
+                else if (golink.indexOf('AOAS2020WorkatHome') > 0) {
+                    webConfig.listName = "TECKNOWLOGY-RAFFLE";
+                    lookupTitle = 'Tecknowlogy Raffle';
+                } else if (golink.indexOf('hchallenge') > 0) {
+                    webConfig.listName = "AOAS-Raffle-Eventsurvey";
+                    console.log("clear raffle");
+                    lookupTitle = 'TechChallenge';
+                }
+
+                else if (golink.indexOf('desktopsur') > 0) {
+                    webConfig.listName = "AOAS-DPS";
+                    lookupTitle = 'DesktopSurvey';
+
+                } else if (golink.indexOf('ncsamchallenge') > 0) {
+                    webConfig.listName = "NCSAM-Raffle-Entries";
+                    lookupTitle = 'NCSAMchallenge';
+                }
+                else if (golink.indexOf('SAQuestions') > 0) {
+                    webConfig.listName = "SAQuestions-Raffle-Entries";
+                    lookupTitle = 'SAQuestionsRaffle';
+                }
+                else {
+
+                    webConfig.listName = "AOAS-Raffle-Points";
+
+                    lookupTitle = 'Raffle';
+                }
+            }
+            var results = [];
+            var getListItems = function (url) {
+                var golink = $('#myrafflesData').val().toLowerCase();
+                console.log("RAFFLE golink", golink)
+                if (golink) {
+                    if (golink.indexOf('labs') > 0) {
+                        webConfig.listName = "AOAS-Raffle-Entries";
+                        lookupTitle = 'Entry Raffle';
+                    }
+                    else if (golink.indexOf('technologysur') > 0) {
+                        webConfig.listName = "Technology-Survey";
+                        lookupTitle = 'TechnologySurvey';
+                    }
+                    else if (golink.indexOf('techspotsur') > 0) {
+                        webConfig.listName = "Techspot-Survey";
+                        lookupTitle = 'TechspotSurvey';
+                    }
+                    else if (golink.indexOf('tsurvey') > 0) {
+                        webConfig.listName = "AOAS-Raffle";
+                        lookupTitle = 'Survey Raffle';
+                    } else if (golink.indexOf('techspot') > 0) {
+                        webConfig.listName = "TECHSPOT-RAFFLE";
+                        lookupTitle = 'Techspot Raffle';
+                    }
+                    else if (golink.indexOf('AOAS2020WorkatHome') > 0) {
+                        webConfig.listName = "TECKNOWLOGY-RAFFLE";
+                        lookupTitle = 'Tecknowlogy Raffle';
+                    }
+                    else if (golink.indexOf('hchallenge') > 0) {
+                        webConfig.listName = "AOAS-Raffle-Eventsurvey";
+                        lookupTitle = 'TechChallenge';
+                    }
+
+                    else if (golink.indexOf('desktopsur') > 0) {
+                        webConfig.listName = "AOAS-DPS";
+                        lookupTitle = 'DesktopSurvey';
+                    }
+                    else if (golink.indexOf('ncsamchallenge') > 0) {
+                        webConfig.listName = "NCSAM-Raffle-Entries";
+                        lookupTitle = 'NCSAMchallenge';
+                    }
+                    else if (golink.indexOf('saquestions') > 0) {
+                        webConfig.listName = "SAQuestions-Raffle-Entries";
+                        lookupTitle = 'SAQuestionsRaffle';
+                    }
+                    else {
+                        webConfig.listName = "AOAS-Raffle-Points";
+                        lookupTitle = 'Raffle';
+                    }
+                }
+
+                return $.ajax({
+                    url: url ? url : "/sites/always/_api/Web/Lists/GetByTitle('" + webConfig.listName + "')/Items?$orderby=ID asc",
+                    method: 'GET',
+                    headers: {
+                        "accept": "application/json;odata=verbose",
+                    },
+                    datatype: 'json'
+                }).fail(function () {
+                    // alert('Error proccessing the request. Please try again');
+                    swal("", "Error proccessing the request. Please try again.", "error");
+
+                });
+            };
+
+
+            getListItems(url).done(function (data) {
+                // alert("HERE")
+                results = results.concat(data.d.results);
+                if (data.d.__next) {
+                    url = data.d.__next;
+                    getDeleteListItems(url);
+                    // alert("already")
+                } else {
+                    // alert()
+                    var errors = 0;
+                    if (results.length != 0) {
+                        for (var i = results[0].ID; i <= results[results.length - 1].ID; i++) {
+                            try {
+                                console.log(i)
+                                $().SPServices({
+                                    webURL: webConfig.baseUrl,
+                                    operation: "UpdateListItems",
+                                    async: false,
+                                    batchCmd: "Delete",
+                                    ID: i,
+                                    listName: webConfig.listName,
+                                    completefunc: function (xData, Status) { }
+                                });
+
+                            } catch (e) {
+                                console.error(e);
+                                errors++;
+                            }
+                        }
+                    }
+                    if (errors <= 0) {
+                        // $('#successAlert').modal('show');
+                        /*  swal("Deleted!", "Your raffle is deleted sucsessfully!", "success"); */
+                        swal({
+                            title: "Deleted!",
+                            text: "Your raffle is deleted sucsessfully!",
+                            type: "success"
+                        }, function () {
+                            location.reload();
+
+                        });
+
+                        $('.progress-spinner').hide();
+                    }
+                }
+            });
+        }
+
+
+        var QuestionsList = [];
+        $('#import-file').on("change", function () {
+            console.log("$('#key').val()", $('#key').val())
+            parseInputFile($('#key').val());
+            QuestionsList = [];
+        });
+
+
+        function parseInputFile(key) {
+            var questionInfo = [];
+
+            var fileUpload = $('#import-file')[0];
+            var reader = new FileReader();
+            console.log(reader);
+
+            //browser other than IE
+            if (reader.readAsBinaryString) {
+                reader.onload = function (e) {
+                    ProcessExcel(e.target.result, questionInfo, key);
+                };
+                reader.readAsBinaryString(fileUpload.files[0]);
+
+            } else {
+                reader.onload = function (e) {
+                    var data = "";
+                    var bytes = new Uint8Array(e.target.result);
+                    for (var i = 0; i < bytes.byteLength; i++) {
+                        data += String.fromCharCode(bytes[i]);
+                    }
+                    ProcessExcel(data, questionInfo, key);
+                };
+                reader.readAsArrayBuffer(fileUpload.files[0]);
+            }
+        }
+
+        function ProcessExcel(data, questionInfo, key) {
+            //Read the Excel File data.
+            var workbook = XLSX.read(data, {
+                type: 'binary'
+            });
+
+            //Fetch the name of First Sheet.
+            var firstSheet = workbook.SheetNames[0];
+
+            //Read all rows from First Sheet into an JSON array.
+            var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
+            for (var i = 0; i < excelRows.length; i++) {
+                console.log(excelRows[i].Question);
+                if (excelRows[i].Question && excelRows[i].Number) {
+                    // submitQuestion(excelRows[i], key);
+                    console.log("excelRows[i], key", excelRows[i], key);
+                    QuestionsList.push(excelRows[i]);
+                }
+            }
+            console.log("QuestionsList", QuestionsList);
+        };
+
+
+        $('#upload-questions-excel').click(function () {
+            console.log("QuestionsList", QuestionsList);
+            console.log("golink", listName);
+
+            $.ajax({
+                url: webConfig.baseUrl + "/_api/web/lists/getByTitle('" + listName + "')/items",
+                type: "GET",
+                headers: {
+                    "accept": "application/json;odata=verbose",
+                },
+                success: function (data) {
+                    console.log("data", data)
+                    var items = data.d.results;
+                    console.log("items", items);
+
+                    // for (var i = 0; i < items.length; i++) {
+                    //     var item = items[i];
+                    //     console.log("item", item);
+                    //     var url = "/_api/Web/Lists/getByTitle('" + listName + "')/getItemById(" + item.ID + ")";
+                    //     console.log("url", url);
+                    //     deleteItem(url);
+                    // }
+                    var errors = 0;
+                    if (items.length != 0) {
+                        for (var i = items[0].ID; i <= items[items.length - 1].ID; i++) {
+                            try {
+                                console.log(i)
+                                $().SPServices({
+                                    webURL: webConfig.baseUrl,
+                                    operation: "UpdateListItems",
+                                    async: false,
+                                    batchCmd: "Delete",
+                                    ID: i,
+                                    listName: listName,
+                                    completefunc: function (xData, Status) { }
+                                });
+
+                            } catch (e) {
+                                console.error(e);
+                                errors++;
+                            }
+                        }
+                    }
+                    if (errors > 0) {
+                        alert("Something went wrong.please try again.")
+                    } else {
+                        var resp = false;
+                        console.log("QuestionsList alpha", QuestionsList)
+                        for (var i = 0; i < QuestionsList.length; i++) {
+                            var item = QuestionsList[i];
+                            $().SPServices({
+                                webURL: webConfig.baseUrl,
+                                operation: "UpdateListItems",
+                                async: false,
+                                batchCmd: "New",
+                                listName: listName,
+                                valuepairs: [
+                                    ['Title', item.Question],
+                                    ['Choice1', item.Answer1],
+                                    ['Choice2', item.Answer2],
+                                    ['Choice3', item.Answer3 ? item.Answer3 : ''],
+                                    ['Choice4', item.Answer4 ? item.Answer4 : ''],
+                                    ['Choice5', item.Answer5 ? item.Answer5 : ''],
+                                    ['Answer', item.Correct_Answer],
+                                ],
+                                completefunc: function (xData,
+                                    Status) {
+                                    // console.log("xData", xData, Status)
+                                }
+                            });
+                        }
+                        swal("Uploaded sucsessfully!", chkLink.split("go/")[1] + " Updated sucsessfully", "success");
+                    }
+                },
+                error: function (error) {
+                    alert(JSON.stringify(error));
+                }
+            });
+        })
+
+
+    </script>
+
+    <script>
+        $(function () {
+            var d = new Date();
+            var month = d.getMonth();
+            var day = d.getDate();
+            var year = d.getFullYear();
+            $('.date').datetimepicker({
+                minDate: d,
+                sideBySide: true,
+                stepping: 5,
+                keepOpen: true
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>
